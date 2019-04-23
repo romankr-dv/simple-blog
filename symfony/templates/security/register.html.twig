@@ -1,0 +1,14 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}{{ 'Register' | trans }}{% endblock %}
+
+{% block content %}
+    <h1 class="h3">{{ 'Register' | trans }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword) }}
+
+        <button class="btn btn-primary">{{ 'Register' | trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,5 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary d-inline-block">{{ button_label|default('Save' | trans) }}</button>
+    <a href="{{ path('category_index') }}" class="btn btn-secondary float-right">{{ 'Back to list' | trans }}</a>
+{{ form_end(form) }}

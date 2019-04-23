@@ -1,0 +1,78 @@
+# Entity values
+Id: Id
+Title: Title
+Content: Content
+Created: Created
+Updated: Updated
+Description: Description
+Category: Category
+Categories: Categories
+Tag: Tag
+Comments: Comments
+Order: Order
+CreatedAt: Created
+UpdatedAt: Updated
+Operations: Operations
+Posts: Posts
+Filter: Filter
+From: From
+To: To
+Email: Email
+Password: Password
+Plain password: Password
+Post view: View
+table: Table
+list: List
+
+# Action
+New Post: New Post
+Edit Post: Edit Post
+Create category: Create new category
+Edit Category: Edit Category
+New Comment: New Comment
+Edit Comment: Edit Comment
+Set count of shown posts: Count of posts
+
+# Сonfirm
+Publish: Publish
+Update: Update
+Save: Save
+Sign in: Sign in
+Set: Set
+
+# Template
+Html.Title: Welcome!
+Template.Title: The Blog
+Template.Description: An example blog built with Symfony.
+Template.Footer: Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.
+About.Description: Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+Post.Meta: "%date% in %category% category"
+
+# Go to (links)
+Home: Home
+About: About
+Most Recent: Most Recent
+Back to top: Back to top
+Elsewhere: Elsewhere
+Back to list: Back to list
+Log in: Log in
+Log out: Log out
+Register: Register
+Search: Search
+Admin Panel: Admin Panel
+
+# Messages
+Post created: Post created successfuly!
+Post updated: Post updated successfuly!
+Post deleted: Post deleted successfuly!
+No posts found: Sorry! There is no posts!
+No categories found: Sorry! There is no categories!
+Confirm delete: Are you sure you want to delete this item?
+Category created: Category created successfuly!
+Category updated: Category updated successfuly!
+Category deleted: Category deleted successfuly!
+Comment created: Comment created successfuly!
+Comment updated: Comment updated successfuly!
+Comment deleted: Comment deleted successfuly!
+Log in for new comment: Please log in if you want to leave a comment!
+No comments: There is no comments yet!

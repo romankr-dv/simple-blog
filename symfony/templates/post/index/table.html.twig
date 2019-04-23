@@ -1,0 +1,59 @@
+{% extends 'post/index.html.twig' %}
+
+{# @var pagination \Knp\Component\Pager\Pagination\AbstractPagination #}
+{# @var post  \App\Entity\Post #}
+
+{% block posts %}
+<h1 class="h3 mb-3">{{ 'Posts' | trans }}</h1>
+<table class="table table-striped custom-table mb-4">
+    <thead>
+    <tr>
+        <th{% if pagination.isSorted('post.id') %} class="active" {% endif %}>
+            {{ knp_pagination_sortable(pagination, 'Id', 'post.id') }}
+        </th>
+        <th{% if pagination.isSorted('post.title') %} class="active" {% endif %}>
+            {{ knp_pagination_sortable(pagination, 'Title', 'post.title') }}
+        </th>
+        <th{% if pagination.isSorted('category.title') %} class="active" {% endif %}>
+            {{ knp_pagination_sortable(pagination, 'Category', 'category.title') }}
+        </th>
+        <th{% if pagination.isSorted('post.createdAt') %} class="active" {% endif %}>
+            {{ knp_pagination_sortable(pagination, 'Created', 'post.createdAt') }}
+        </th>
+        <th>
+            {{ 'Operations' | trans }}
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for post in pagination %}
+    <tr{% if loop.index is odd%} class="post-table-odd" {% endif %}>
+        <td>{{ post.id }}</td>
+        <td>{{ post.title }}</td>
+        <td><a href="{{
+            url('post_index', app.request.query.all|merge({
+                'filter_post[category]': post.category.id
+            }))
+        }}">{{ post.category.title }}</a></td>
+        <td><a href="{{
+            url('post_index', app.request.query.all|merge({
+                'filter_post[from]': post.createdAt | date('Y-m-d'),
+                'filter_post[to]'  : post.createdAt | date('Y-m-d')
+            }))
+        }}">{{ post.createdAt | date('d/m/Y') }}</a></td>
+        <td>
+            <a href="{{ url('post_show', {'slug': post.slug}) }}" class="mr-1">
+                <i class="fas fa-file-invoice"></i>
+            </a>
+            {% if is_granted('POST_EDIT', post) %}
+            <a href="{{ url('post_edit', {'slug': post.slug}) }}" class="mr-1">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+            <div class="d-inline-block">{{ include('post/_delete_form.html.twig') }}</div>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{# @var app \Symfony\Bridge\Twig\AppVariable#}
+
+{% block body %}
+
+<div class="blog-masthead fixed-top">
+    <div class="container">
+        {{ include('_nav.html.twig') }}
+    </div>
+</div>
+
+<div class="blog-header">
+    <div class="container">
+        {{ include('_header.html.twig') }}
+    </div>
+</div>
+
+{% for label, messages in app.flashes %}
+    <div class="container mb-4">
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+            {{ message | trans }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+    </div>
+{% endfor %}
+{% block breadcrumbs %}
+    <div>
+        <div class="container mb-4">
+            {{ wo_render_breadcrumbs() }}
+        </div>
+    </div>
+{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="col-sm-3 offset-sm-1 blog-sidebar">
+            {% block sidebar %}
+                {{ include('_sidebar.html.twig') }}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<footer class="blog-footer">
+    {{ include('_footer.html.twig') }}
+</footer>
+
+{% endblock %}

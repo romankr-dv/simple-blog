@@ -1,0 +1,27 @@
+{% extends 'page.html.twig' %}
+
+{# @var post \App\Entity\Post #}
+
+{% block title %}{{ 'Edit Post' | trans }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="blog-post-panel">
+        <a href="{{ url('post_show', {'slug': post.slug}) }}"><i class="fas fa-file-invoice"></i></a>
+        <div class="d-inline-block">{{ include('post/_delete_form.html.twig') }}</div>
+    </div>
+    <div class="blog-post">
+        <h1 class="h3">{{ 'Edit Post' | trans }}</h1>
+        {{ include('post/_form.html.twig') }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('javascript/ckeditor/adapters/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('javascript/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('textarea.ckeditor').ckeditor();
+        });
+    </script>
+{% endblock %}

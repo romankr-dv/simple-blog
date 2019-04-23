@@ -1,0 +1,10 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}{{ 'New Comment' | trans }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="blog-post">
+        <h1 class="h3">{{ 'New Comment' | trans }}</h1>
+        {{ include('comment/_form.html.twig', {'label': 'Save'|trans}) }}
+    </div>
+{% endblock %}

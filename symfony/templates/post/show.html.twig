@@ -1,0 +1,45 @@
+{% set current_path = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))  %}
+
+{% extends 'page.html.twig' %}
+
+{# @var post \App\Entity\Post#}
+
+{% block title %}{{ post.title }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="blog-post-panel">
+
+        <a href="
+                {% if is_granted('ROLE_USER') %}
+                    {% if is_post_liked_by_user(post, app.user) %}
+                        {{ url('post_dislike', {'slug': post.slug}) }}
+                    {% else %}
+                        {{ url('post_like', {'slug': post.slug}) }}
+                    {% endif %}
+                {% else %}
+                    #
+                {% endif %}">
+
+            <i class="fas fa-heart"
+               {% if is_granted('ROLE_USER') and is_post_liked_by_user(post, app.user) %}
+                    style="color: tomato"
+               {% endif %}>
+            </i>
+        </a>
+        <span style="font-size: 1.4rem;">{{ post.getCountOfLikes() }}</span>
+
+        {% if is_granted('POST_EDIT', post) %}
+            <a href="{{ url('post_edit', {'slug': post.slug}) }}"><i class="fas fa-pencil-alt"></i></a>
+            <div class="d-inline-block">{{ include('post/_delete_form.html.twig') }}</div>
+        {% endif %}
+    </div>
+    <div class="blog-post">
+        <h1 class="h3 blog-post-title">{{ post.title }}</h1>
+        {{ include('post/_meta.html.twig') }}
+        {{ post.description | raw }}
+        {{ post.content | raw }}
+    </div>
+    <div class="blog-post-comments">
+        {{ include('post/_comments.html.twig') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'page.html.twig' %}
+
+{# @var app \Symfony\Bridge\Twig\AppVariable#}
+{# @var pagination \Knp\Component\Pager\Pagination\AbstractPagination #}
+
+{% block title %}{{ 'Posts' | trans }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+    {% if pagination is not empty %}
+        <div class="blog-post-panel">
+            <a href="{{ url('post_index', app.request.query.all|merge({'view': 'list'})) }}"{% if app.request.get('view') is same as('list') or app.request.get('view') is empty %} class="active" {% endif %}><i class="fas fa-th-list"></i></a>
+            <a href="{{ url('post_index', app.request.query.all|merge({'view': 'table'})) }}"{% if app.request.get('view') is same as('table') %} class="active" {% endif %}><i class="fas fa-table"></i></a>
+        </div>
+        {% block posts %}{% endblock %}
+    {% else %}
+        <div class="blog-post">
+            <h1 class="h3">{{ 'No posts found' | trans }}</h1>
+        </div>
+    {% endif %}
+    <div class="blog-pagination mb-5">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+    <div class="sidebar-module">
+        <h4>{{ 'Set count of shown posts' | trans }}</h4>
+        <form method="get" action="">
+            {{ generate_all_input_hidden(app.request.query.all(), ['post-count']) | raw }}
+            <input type="number" class="form-control mb-2" name="post-count" value="{{ app.request.get('post-count') }}">
+            <button class="btn btn-primary">{{ 'Set' | trans }}</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+Title is empty: Title is empty!
+Description is empty: Description is empty!
+Content is empty: Content is empty!
+Category is null: Category can not be null!
+Order is null: Order can not be null!
+Email is not unique: There is already an account with this email!
+Password is empty:  Please enter a password!
+Password min length:  Your password should be at least {{ limit }} characters
+Email is not valid: Email is not valid!
+Content of comment is empty: Content of comment must not be blank!

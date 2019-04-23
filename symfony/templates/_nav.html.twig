@@ -1,0 +1,6 @@
+{%  if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    {{ knp_menu_render(knp_menu_get('user', [], {'root_class': 'nav float-right', 'link_class': 'nav-link'})) }}
+{% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+    {{ knp_menu_render(knp_menu_get('auth', [], {'root_class': 'nav float-right', 'link_class': 'nav-link'})) }}
+{% endif %}
+{{ knp_menu_render(knp_menu_get('main', [], {'root_class': 'nav', 'link_class': 'nav-link'})) }}

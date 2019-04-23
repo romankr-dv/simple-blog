@@ -1,0 +1,14 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}{{ 'Edit Comment' | trans }} - {{ parent() }} {%  endblock %}
+
+{% block content %}
+    <div class="blog-post-panel">
+        <a href="{{ url('post_show', {'slug': comment.post.slug}) }}"><i class="fas fa-file-invoice"></i></a>
+        <div class="d-inline-block">{{ include('comment/_delete_form.html.twig') }}</div>
+    </div>
+    <div class="blog-post">
+        <h1 class="h3">{{ 'Edit Comment' | trans }}</h1>
+        {{ include('comment/_form.html.twig', {'label': 'Update'|trans}) }}
+    </div>
+{% endblock %}

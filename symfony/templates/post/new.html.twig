@@ -1,0 +1,19 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}{{ 'New Post' | trans }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+    <h1 class="h3">{{ 'New Post' | trans }}</h1>
+    {{ include('post/_form.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/javascript/ckeditor/adapters/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascript/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('textarea.ckeditor').ckeditor();
+        });
+    </script>
+{% endblock %}

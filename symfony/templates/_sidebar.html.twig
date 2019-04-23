@@ -1,0 +1,24 @@
+{{ include('_settings.html.twig') }}
+<div class="sidebar-module">
+    <h4>{{ 'Category' | trans }}</h4>
+    {{ knp_menu_render(knp_menu_get('categories', [], {'root_class': 'list-unstyled', 'link_class': ''})) }}
+</div>
+<div class="sidebar-module sidebar-module-inset">
+    <h4>{{ 'Search' | trans }}</h4>
+    <form method="get">
+        <input type="text" class="form-control mb-2" name="search" value="{{ app.request.get('search') }}">
+        <button class="btn btn-primary">{{ 'Search' | trans }}</button>
+    </form>
+</div>
+<div class="sidebar-module">
+    <h4>{{ 'About' | trans }}</h4>
+    <p>{{ 'About.Description' | trans | raw }}</p>
+</div>
+<div class="sidebar-module sidebar-module-inset">
+    <h4>{{ 'Elsewhere' | trans }}</h4>
+    <ol class="list-unstyled">
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+    </ol>
+</div>

@@ -1,0 +1,48 @@
+{% if app.request.get('filter_post') is not null or app.request.get('view') is not null %}
+<div class="sidebar-module sidebar-module-inset settings">
+    <a href="{{ url('post_index') }}" class="float-right"><i class="fas fa-times"></i></a>
+    <h4>{{ 'Filter' | trans }}</h4>
+    <ul class="list-unstyled">
+        {% if filter.category is not null %}
+            <li>
+                <a class="float-right" href="{{ url('post_index', app.request.query.all() | merge_recursive({'filter_post': {'category': null}})) }}">
+                    <i class="fas fa-times"></i>
+                </a>
+                {{ 'Category' | trans }}: {{ filter.category.title }}
+            </li>
+        {% endif %}
+        {% if filter.tag is not null %}
+            <li>
+                <a class="float-right" href="{{ url('post_index', app.request.query.all() | merge_recursive({'filter_post': {'tag': null}})) }}">
+                    <i class="fas fa-times"></i>
+                </a>
+                {{ 'Tag' | trans }}: {{ filter.tag.title }}
+            </li>
+        {% endif %}
+        {% if filter.from is not null %}
+            <li>
+                <a class="float-right" href="{{ url('post_index', app.request.query.all() | merge_recursive({'filter_post': {'from': null}})) }}">
+                    <i class="fas fa-times"></i>
+                </a>
+                {{ 'From' | trans }}: {{ filter.from | date('F d, Y') }}
+            </li>
+        {% endif %}
+        {% if filter.to is not null %}
+            <li>
+                <a class="float-right" href="{{ url('post_index', app.request.query.all() | merge_recursive({'filter_post': {'to': null}})) }}">
+                    <i class="fas fa-times"></i>
+                </a>
+                {{ 'To' | trans }}: {{ filter.to | date('F d, Y') }}
+            </li>
+        {% endif %}
+        {% if app.request.get('view') is not null %}
+            <li>
+                <a class="float-right" href="{{ url('post_index', app.request.query.all() | merge({'view': null})) }}">
+                    <i class="fas fa-times"></i>
+                </a>
+                {{ 'Post view' | trans }}: {{ app.request.get('view') | trans }}
+            </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}

@@ -1,0 +1,16 @@
+home:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: post_index
+        permanent: true
+        keepQueryParams: true
+
+posts:
+    type: rest
+    resource: App\Controller\Api\PostController
+
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }

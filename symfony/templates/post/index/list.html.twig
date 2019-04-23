@@ -1,0 +1,14 @@
+{% extends 'post/index.html.twig' %}
+
+{# @var pagination \Knp\Component\Pager\Pagination\AbstractPagination #}
+{# @var post  \App\Entity\Post #}
+
+{% block posts %}
+{% for post in pagination %}
+<div class="blog-post">
+    <a class="h3 blog-post-title" href="{{ url('post_show', {'slug': post.slug}) }}">{{ post.title }}</a>
+    {{ include('post/_meta.html.twig') }}
+    {{ post.description | raw }}
+</div>
+{% endfor %}
+{% endblock %}

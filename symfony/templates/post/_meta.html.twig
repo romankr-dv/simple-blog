@@ -1,0 +1,26 @@
+<p class="blog-post-meta">
+    {{ 'Post.Meta' | trans({
+        '%date%':
+        '<a href="' ~
+        url('post_index', app.request.query.all|merge({
+            'filter_post[from]': post.createdAt | date('Y-m-d'),
+            'filter_post[to]'  : post.createdAt | date('Y-m-d')
+        })) ~
+        '">' ~ post.createdAt | date('F d, Y') ~ '</a>',
+        '%category%':
+        '<a href="' ~
+        url('post_index', app.request.query.all|merge({
+            'filter_post[category]': post.category.id
+        })) ~
+        '">' ~ post.category.title ~ '</a>'
+    }) | raw }}
+</p>
+<p class="blog-post-meta">
+    {% for tag in post.tags %}
+        <a href="{{ url('post_index', app.request.query.all|merge({
+            'filter_post[tag]': tag.id
+        })) }}">
+            {{ tag.title }}{% if not loop.last %},{% endif %}
+        </a>
+    {% endfor %}
+</p>

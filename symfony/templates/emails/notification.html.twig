@@ -1,0 +1,11 @@
+<h3>This is your notification.</h3>
+
+<ul>
+{% for post in posts %}
+    <li>
+        <a href="{{ url('post_show', {'slug': post.slug}) }}">
+            <h4>{{ post.title }}</h4>
+        </a>
+    </li>
+{% endfor %}
+</ul>

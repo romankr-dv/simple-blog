@@ -1,0 +1,10 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}{{ 'Create category' | trans }} - {{ parent() }}{% endblock %}
+
+{% block content %}
+    <h1 class="h3">{{ 'Create category' | trans }}</h1>
+
+    {{ include('category/_form.html.twig') }}
+
+{% endblock %}
