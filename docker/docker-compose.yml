@@ -23,6 +23,6 @@ services:
             - "80:80"
         volumes:
             - ./logs/nginx/:/var/log/nginx
-            - ..:/var/www/symfony
+            - ../symfony:/var/www/symfony
         depends_on:
             - php
